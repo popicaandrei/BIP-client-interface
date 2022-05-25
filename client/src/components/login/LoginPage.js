@@ -1,7 +1,7 @@
 import "./LoginPage.scss";
-import {Login} from "../../services/UserService.js";
+import {IsUserLoggedIn, Login} from "../../services/UserService.js";
 import {useState} from "react";
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 
 export function LoginPage() {
@@ -10,17 +10,14 @@ export function LoginPage() {
     const [btndisabled, setDisabeled] = useState(false);
 
     async function login() {
-        let username = document.getElementById("username").value;
+        let email = document.getElementById("username").value;
         let password = document.getElementById("password").value;
 
         setDisabeled(true);
-        let isLoggedIn = await Login(username, password);
+        let isLoggedIn = await Login(email, password);
         setDisabeled(false);
 
-        if (isLoggedIn)
-            navigate("/home");
-        else
-            setFail(true);
+        IsUserLoggedIn() ? navigate("/home") : setFail(true);
     }
 
     function validCredentials() {
@@ -32,7 +29,6 @@ export function LoginPage() {
         if (event.code === "Enter" || event.code === "NumpadEnter")
             login();
     }
-
 
     return (
         <div className="center-login-page">

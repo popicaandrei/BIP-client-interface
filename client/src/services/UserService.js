@@ -2,15 +2,20 @@ import axios from "axios";
 import {ApiUtil} from '../utils/ApiUtil'
 import {User} from "../models/User";
 
-export async function Login(username, password) {
+export async function Login(email, password) {
     let path = ApiUtil.URL + "/login";
     try {
-        let response = await axios.post(path, {
-            username: username,
+        let token;
+        await axios.post(path, {
+            email: email,
             password: password,
+        }).then( (response) => {
+            token = response.headers["authorization"];
         });
-        let token = response.getHeader("Authorization");
+        console.log(token)
         localStorage.setItem("jwt", token);
+        User =  await GetLoggedInUser();
+        console.log(User)
         return true;
     } catch {
         return false;
@@ -21,9 +26,9 @@ export async function GetLoggedInUser() {
     let path = ApiUtil.URL + "/users";
     try {
         let response = await axios.get(path, {
-            headers: {"Authorization": "Bearer " + localStorage.getItem("jwt")},
+            headers: {"Authorization": localStorage.getItem("jwt")},
         });
-        User = response.data;
+        console.log(response.data)
         return response.data;
     } catch {
         console.log("Error");
