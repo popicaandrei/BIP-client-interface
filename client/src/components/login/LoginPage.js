@@ -3,7 +3,8 @@ import {IsUserLoggedIn, Login} from "../../services/UserService.js";
 import {useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import {Button, Input, Spacer, Text} from "@nextui-org/react";
-
+import person1 from "../../illustrations/person1.svg";
+import person2 from "../../illustrations/person2.svg";
 
 export function LoginPage() {
     const [fail, setFail] = useState(false);
@@ -54,11 +55,11 @@ export function LoginPage() {
                     <Spacer y={0.3}/>
                     {validCredentials()}
                 </div>
-                <div id="logo-div" className="d-none d-md-flex col-0 col-md-6">
-                    <h2>aidasdna</h2>
-                    {/*<img className="logo" src={logo} alt=""></img>*/}
-                </div>
             </div>
+                <div className="logo-div">
+                    <img src={person2} alt=""></img>
+                    <img src={person1} alt=""></img>
+                </div>
         </div>
     );
 }

@@ -4,34 +4,16 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-
 }
 
-#login-title{
-  color: black;
-  font-size: xxx-large;
-}
 .login-first-form{
   margin-top: 2em;
 }
-.login-form{
-  max-width:19em;
-  margin-top: 0.5em;
-}
-
-.login-button{
-  margin-top: 2.8em;
-  padding: .7em 3em;
-  &:disabled{
-    opacity: 0.8;
-    cursor:not-allowed;
-  }
-}
-
-.invalid-login{
-  font-size: x-large;
-}
 
 .login-page-div{
-  width: 70%;
+  width: 30%;
+  display: inline-flex;
+  justify-content: left;
+  align-items: center;
+  ;
 }
