@@ -2,27 +2,26 @@ import "./LoginPage.scss";
 import {IsUserLoggedIn, Login} from "../../services/UserService.js";
 import {useState} from "react";
 import {useNavigate} from 'react-router-dom';
+import {Button, Input, Spacer, Text} from "@nextui-org/react";
 
 
 export function LoginPage() {
     const [fail, setFail] = useState(false);
     const navigate = useNavigate();
-    const [btndisabled, setDisabeled] = useState(false);
 
     async function login() {
         let email = document.getElementById("username").value;
         let password = document.getElementById("password").value;
 
-        setDisabeled(true);
         let isLoggedIn = await Login(email, password);
-        setDisabeled(false);
-
         IsUserLoggedIn() ? navigate("/home") : setFail(true);
     }
 
     function validCredentials() {
         if (fail)
-            return <p className="invalid-login text-bold mt-3">Wrong Credentials!</p>;
+            return <Text color="error" size="100%">
+                Wrong credentials provided
+            </Text>
     }
 
     function enterSubmit(event) {
@@ -33,37 +32,26 @@ export function LoginPage() {
     return (
         <div className="center-login-page">
             <div className="login-page-div row">
-                <div id="right-text" className="mr-3 mr-sm-0 col-12 col-md-6">
-                    <h1 id="login-title" className="mb-4">
-                        Welcome back!
-                    </h1>
+                <div id="right-text">
+                    <Text h1 size={57} css={{textGradient: "45deg, $blue600 -20%, $pink600 50%",}} weight="bold">
+                        Welcome to your
+                    </Text>
+                    <Text h1 size={60} css={{textGradient: "45deg, $yellow600 -20%, $red400 100%",}} weight="bold">
+                        City Portal
+                    </Text>
                     <div className="login-first-form">
-                        <p className="text-bold">Username</p>
-                        <Input label="Full Name" placeholder="Guillermo Rauch" />;
-                        <input
-                            id="username"
-                            className="login-form form-control"
-                            type="text"
-                            onKeyPress={enterSubmit}
-                        ></input>
+                        <Input bordered id={"username"} label="Email" placeholder="user@gmail.com" onKeyPress={enterSubmit}
+                              color="secondary" size="lg"/>
                     </div>
                     <div className="login-first-form">
-                        <p className="text-bold">Password</p>
-                        <input
-                            id="password"
-                            className="login-form form-control"
-                            type="password"
-                            onKeyPress={enterSubmit}
-                        ></input>
+                        <Input.Password bordered id={"password"} label="Password" placeholder="password"
+                                        onKeyPress={enterSubmit} color="secondary" size="lg"/>
                     </div>
-                    <button
-                        className="login-button round bg-red text-bold text-white btn-hover"
-                        onClick={login}
-                        disabled={btndisabled}
-                    >
+                    <Spacer y={1.5}/>
+                    <Button size="lg" onClick={login} color="gradient" auto ghost>
                         Log In
-                    </button>
-
+                    </Button>
+                    <Spacer y={0.3}/>
                     {validCredentials()}
                 </div>
                 <div id="logo-div" className="d-none d-md-flex col-0 col-md-6">
