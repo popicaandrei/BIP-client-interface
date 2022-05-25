@@ -39,6 +39,7 @@ export function LoginPage() {
                     </h1>
                     <div className="login-first-form">
                         <p className="text-bold">Username</p>
+                        <Input label="Full Name" placeholder="Guillermo Rauch" />;
                         <input
                             id="username"
                             className="login-form form-control"
