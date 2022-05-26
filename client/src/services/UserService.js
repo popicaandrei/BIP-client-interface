@@ -12,7 +12,6 @@ export async function Login(email, password) {
             token = response.headers["authorization"];
         });
         localStorage.setItem("jwt", token);
-        return await GetLoggedInUser();
     } catch {
         return false;
     }

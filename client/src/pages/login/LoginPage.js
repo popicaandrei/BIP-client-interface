@@ -1,5 +1,5 @@
 import "./LoginPage.scss";
-import {IsUserLoggedIn, Login} from "../../services/UserService.js";
+import {GetLoggedInUser, IsUserLoggedIn, Login} from "../../services/UserService.js";
 import {useContext, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import {Button, Input, Spacer, Text} from "@nextui-org/react";
@@ -17,7 +17,10 @@ export function LoginPage() {
     async function login() {
         let email = document.getElementById("username").value;
         let password = document.getElementById("password").value;
-        setUser(await Login(email, password));
+
+        await Login(email, password);
+        console.log();
+        await setUser(await GetLoggedInUser());
 
         IsUserLoggedIn() && user.role === 'CITIZEN' ? navigate("/citizens") : setFail(true);
         IsUserLoggedIn() && user.role === 'INSTITUTION' ? navigate("/institutions") : setFail(true);
