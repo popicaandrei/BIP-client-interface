@@ -17,6 +17,7 @@ function App() {
             <div>
                 <UserContext.Provider value={{user, setUser}}>
                     <Routes>
+                        <Route path="*" element={<LoginPage/>}/>
                         <Route path="login" element={<LoginPage/>}/>
                         <Route path="citizens" element={<CitizenPage/>}/>
                         <Route path="institutions" element={<InstitutionPage/>}/>

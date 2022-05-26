@@ -19,11 +19,10 @@ export function LoginPage() {
         let password = document.getElementById("password").value;
 
         await Login(email, password);
-        console.log();
-        await setUser(await GetLoggedInUser());
-
-        IsUserLoggedIn() && user.role === 'CITIZEN' ? navigate("/citizens") : setFail(true);
-        IsUserLoggedIn() && user.role === 'INSTITUTION' ? navigate("/institutions") : setFail(true);
+        var userLogged = await GetLoggedInUser();
+        setUser(userLogged)
+        IsUserLoggedIn() && userLogged.role === 'CITIZEN' ? navigate("/citizens") : setFail(true);
+        IsUserLoggedIn() && userLogged.role === 'INSTITUTION' ? navigate("/institutions") : setFail(true);
     }
 
     function validCredentials() {

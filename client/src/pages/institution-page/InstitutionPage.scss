@@ -1,3 +1,16 @@
-header-section{
-  background: #951111;
+.header-section{
+  background-color: #951111;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+.nav-items {
+  list-style: none;
+  display: flex;
+  margin-right: auto;
 }
