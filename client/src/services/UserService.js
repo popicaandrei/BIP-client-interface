@@ -1,6 +1,5 @@
 import axios from "axios";
 import {ApiUtil} from '../utils/ApiUtil'
-import {User} from "../models/User";
 
 export async function Login(email, password) {
     let path = ApiUtil.URL + "/login";
@@ -9,14 +8,11 @@ export async function Login(email, password) {
         await axios.post(path, {
             email: email,
             password: password,
-        }).then( (response) => {
+        }).then((response) => {
             token = response.headers["authorization"];
         });
-        console.log(token)
         localStorage.setItem("jwt", token);
-        User =  await GetLoggedInUser();
-        console.log(User)
-        return true;
+        return await GetLoggedInUser();
     } catch {
         return false;
     }
@@ -28,7 +24,6 @@ export async function GetLoggedInUser() {
         let response = await axios.get(path, {
             headers: {"Authorization": localStorage.getItem("jwt")},
         });
-        console.log(response.data)
         return response.data;
     } catch {
         console.log("Error");
@@ -38,20 +33,4 @@ export async function GetLoggedInUser() {
 export function IsUserLoggedIn() {
     let jwt = localStorage.getItem("jwt");
     return jwt !== null;
-}
-
-export function GetUserName() {
-    return User.name;
-}
-
-export function GetUserId() {
-    return User.id;
-}
-
-export function GetUserRole() {
-    return User.role;
-}
-
-export function GetUserEmail() {
-    return User.email;
 }

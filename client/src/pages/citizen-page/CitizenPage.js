@@ -1,10 +1,17 @@
 import "./CitizenPage.scss"
-import { Navigate } from 'react-router-dom';
+import {Navigate} from 'react-router-dom';
+import {UserContext} from "../../App";
+import {useContext} from "react";
 
-export function CitizenPage({user}) {
+export function CitizenPage() {
+    const {user, setUser} = useContext(UserContext);
+
+    console.log(user)
+
     if (!user) {
-        return <Navigate to="/login" replace />;
+        return <Navigate to="/login" replace/>;
     }
+
     return (
         <div>
             <div className="sidenav">

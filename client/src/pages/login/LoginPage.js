@@ -1,23 +1,26 @@
 import "./LoginPage.scss";
 import {IsUserLoggedIn, Login} from "../../services/UserService.js";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import {Button, Input, Spacer, Text} from "@nextui-org/react";
 import person1 from "../../illustrations/person1.svg";
 import person2 from "../../illustrations/person2.svg";
-import {User} from "../../models/User";
+import {UserContext} from "../../App";
+
 
 export function LoginPage() {
     const [fail, setFail] = useState(false);
+    const {user, setUser} = useContext(UserContext);
+
     const navigate = useNavigate();
 
     async function login() {
         let email = document.getElementById("username").value;
         let password = document.getElementById("password").value;
+        setUser(await Login(email, password));
 
-        let isLoggedIn = await Login(email, password);
-        IsUserLoggedIn() && User.role === 'CITIZEN' ? navigate("/citizen") : setFail(true);
-        IsUserLoggedIn() && User.role === 'INSTITUTION' ? navigate("/institution") : setFail(true);
+        IsUserLoggedIn() && user.role === 'CITIZEN' ? navigate("/citizens") : setFail(true);
+        IsUserLoggedIn() && user.role === 'INSTITUTION' ? navigate("/institutions") : setFail(true);
     }
 
     function validCredentials() {
@@ -43,8 +46,9 @@ export function LoginPage() {
                         City Portal
                     </Text>
                     <div className="login-first-form">
-                        <Input bordered id={"username"} label="Email" placeholder="user@gmail.com" onKeyPress={enterSubmit}
-                              color="secondary" size="lg"/>
+                        <Input bordered id={"username"} label="Email" placeholder="user@gmail.com"
+                               onKeyPress={enterSubmit}
+                               color="secondary" size="lg"/>
                     </div>
                     <div className="login-first-form">
                         <Input.Password bordered id={"password"} label="Password" placeholder="password"
@@ -58,10 +62,10 @@ export function LoginPage() {
                     {validCredentials()}
                 </div>
             </div>
-                <div className="logo-div">
-                    <img src={person2} alt=""></img>
-                    <img src={person1} alt=""></img>
-                </div>
+            <div className="logo-div">
+                <img src={person2} alt=""></img>
+                <img src={person1} alt=""></img>
+            </div>
         </div>
     );
 }
