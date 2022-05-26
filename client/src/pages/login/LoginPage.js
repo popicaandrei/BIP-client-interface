@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom';
 import {Button, Input, Spacer, Text} from "@nextui-org/react";
 import person1 from "../../illustrations/person1.svg";
 import person2 from "../../illustrations/person2.svg";
+import {User} from "../../models/User";
 
 export function LoginPage() {
     const [fail, setFail] = useState(false);
@@ -15,7 +16,8 @@ export function LoginPage() {
         let password = document.getElementById("password").value;
 
         let isLoggedIn = await Login(email, password);
-        IsUserLoggedIn() ? navigate("/home") : setFail(true);
+        IsUserLoggedIn() && User.role === 'CITIZEN' ? navigate("/citizen") : setFail(true);
+        IsUserLoggedIn() && User.role === 'INSTITUTION' ? navigate("/institution") : setFail(true);
     }
 
     function validCredentials() {
