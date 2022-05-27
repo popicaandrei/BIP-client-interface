@@ -25,11 +25,18 @@ export async function getLoggedInUser() {
             let response = await axios.get(path, {
                 headers: {"Authorization": token},
             });
-            localStorage.setItem("role", response.data.role);
+            localStorage.setItem("user",JSON.stringify(response.data));
             return response.data;
         }
     } catch {
         console.log("Error");
+    }
+}
+
+export function getUser(){
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+        return JSON.parse(loggedInUser);
     }
 }
 
@@ -39,5 +46,6 @@ export function isUserLoggedIn() {
 }
 
 export function hasRole(role) {
-    return role === localStorage.getItem("role");
+    let user = getUser();
+    return user.role === role;
 }

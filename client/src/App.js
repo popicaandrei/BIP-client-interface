@@ -14,7 +14,6 @@ export const UserContext = createContext(null);
 function App() {
     const [user, setUser] = useState(null);
 
-    console.log(isUserLoggedIn());
     return (
         <NextUIProvider theme={darkTheme}>
             <div>

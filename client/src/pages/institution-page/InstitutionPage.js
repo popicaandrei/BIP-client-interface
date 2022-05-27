@@ -1,10 +1,10 @@
 import "./InstitutionPage.scss"
-import {UserContext} from "../../App";
-import {useContext, useEffect} from "react";
+import {useEffect} from "react";
+import Navbar from "../../components/Navbar/Navbar";
+import {getUser} from "../../services/UserService";
 
 export default function InstitutionPage() {
-    const {user, setUser} = useContext(UserContext);
-    console.log(user)
+    const user = getUser();
 
     useEffect(() => {
         console.log(user)
@@ -13,16 +13,11 @@ export default function InstitutionPage() {
     return (
         <div>
             <header className="header-section">
-                <nav className="nav">
-                    <ul className="nav-items">
-                        <li>City Portal</li>
-                        <li>Pricing</li>
-                        <li>About</li>
-                        <li>Contact</li>
-                    </ul>
-                </nav>
+                <Navbar user={user}/>
             </header>
-            <p>InstitutionPage</p>
+                <div className="institution-container">
+                    <p>InstitutionPage</p>
+                </div>
         </div>
     )
 }

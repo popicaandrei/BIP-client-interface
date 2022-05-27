@@ -1,0 +1,30 @@
+.header-section {
+
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-items {
+  padding: 15px;
+  display: flex;
+  width: 33%;
+  float: right;
+  justify-content: center;
+}
+
+.nav-title {
+  padding: 15px;
+  float: left;
+  width: 33%;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.nav-items > li {
+  padding: 15px;
+}
+

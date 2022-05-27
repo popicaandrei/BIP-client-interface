@@ -1,18 +1,12 @@
 import "./CitizenPage.scss"
-import {Navigate} from 'react-router-dom';
-import {UserContext} from "../../App";
-import {useContext, useEffect} from "react";
+import {useEffect} from "react";
+import {getUser} from "../../services/UserService";
 
 
 export function CitizenPage() {
-    const {user, setUser} = useContext(UserContext);
-
-    console.log(user)
+    const user = getUser();
 
     useEffect(() => {
-        if (!user || user.role !== "CITIZEN") {
-            return <Navigate to="/login" replace />;
-        }
     });
 
     return (

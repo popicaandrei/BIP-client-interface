@@ -1,16 +1,8 @@
-.header-section{
-  background-color: #951111;
-}
-
-.nav {
+.institution-container{
   display: flex;
-  justify-content: space-between;
+  height: 80vh;
+  width: 100%;
+  justify-content: center;
   align-items: center;
-  margin: auto;
 }
 
-.nav-items {
-  list-style: none;
-  display: flex;
-  margin-right: auto;
-}
