@@ -16,15 +16,31 @@
   justify-content: center;
 }
 
-.nav-title {
+.nav-avatar{
   padding: 15px;
-  float: left;
+  float:left;
   width: 33%;
   display: inline-flex;
   justify-content: center;
 }
 
-.nav-items > li {
-  padding: 15px;
+.inside-avatar{
+  padding: 20px 10px;
 }
+
+.inside-avatar-icon{
+  padding-top: 10px;
+  margin-right: 5px;
+  display: inline-flex;
+  align-content: center;
+}
+
+.nav-title {
+  padding: 15px;
+  margin: 0  auto;
+  width: 33%;
+  display: inline-flex;
+  justify-content: center;
+}
+
 
