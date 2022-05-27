@@ -1,5 +1,5 @@
 import "./LoginPage.scss";
-import {GetLoggedInUser, IsUserLoggedIn, Login} from "../../services/UserService.js";
+import {getLoggedInUser, isUserLoggedIn, login} from "../../services/UserService.js";
 import {useContext, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import {Button, Input, Spacer, Text} from "@nextui-org/react";
@@ -14,15 +14,15 @@ export function LoginPage() {
 
     const navigate = useNavigate();
 
-    async function login() {
+    async function verifyAuth() {
         let email = document.getElementById("username").value;
         let password = document.getElementById("password").value;
 
-        await Login(email, password);
-        var userLogged = await GetLoggedInUser();
+        await login(email, password);
+        var userLogged = await getLoggedInUser();
         setUser(userLogged)
-        IsUserLoggedIn() && userLogged.role === 'CITIZEN' ? navigate("/citizens") : setFail(true);
-        IsUserLoggedIn() && userLogged.role === 'INSTITUTION' ? navigate("/institutions") : setFail(true);
+        isUserLoggedIn() && userLogged.role === 'CITIZEN' ? navigate("/citizens") : setFail(true);
+        isUserLoggedIn() && userLogged.role === 'INSTITUTION' ? navigate("/institutions") : setFail(true);
     }
 
     function validCredentials() {
@@ -34,7 +34,7 @@ export function LoginPage() {
 
     function enterSubmit(event) {
         if (event.code === "Enter" || event.code === "NumpadEnter")
-            login();
+            verifyAuth();
     }
 
     return (
@@ -57,7 +57,7 @@ export function LoginPage() {
                                         onKeyPress={enterSubmit} color="secondary" size="lg"/>
                     </div>
                     <Spacer y={1.5}/>
-                    <Button size="lg" onClick={login} color="gradient" auto ghost>
+                    <Button size="lg" onClick={verifyAuth} color="gradient" auto ghost>
                         Log In
                     </Button>
                     <Spacer y={0.3}/>
