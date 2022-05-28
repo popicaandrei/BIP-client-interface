@@ -15,7 +15,7 @@ export const darkTheme = createTheme({
             primarySolidHover: '$green700',
             primarySolidContrast: '$white',
             primaryShadow: '$green500',
-            background: '#1a1919',
+            background: '#000000',
             gradient: 'linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)',
             link: '#5E1DAD',
             myColor: '#ff4ecd'
