@@ -7,7 +7,8 @@ export function CitizenPage() {
     const user = getUser();
 
     useEffect(() => {
-    });
+        console.log("hello")
+    }, []);
 
     return (
         <div>

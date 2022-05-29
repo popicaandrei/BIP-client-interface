@@ -1,8 +1,10 @@
 import {ApiUtil} from "../utils/ApiUtil";
 import axios from "axios";
 
+const institutionUrl = "/institutions"
+
 export async function getEventsForInstitution() {
-    let path = ApiUtil.URL + "/events";
+    let path = ApiUtil.URL + institutionUrl + "/events";
     try {
         const token = localStorage.getItem("jwt");
         if (token) {
