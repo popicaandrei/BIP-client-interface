@@ -18,6 +18,21 @@ export async function getEventsForInstitution() {
     }
 }
 
+export async function getEventsForInstitutionNotValidated() {
+    let path = ApiUtil.URL + institutionUrl + "/events/validate";
+    try {
+        const token = localStorage.getItem("jwt");
+        if (token) {
+            let response = await axios.get(path, {
+                headers: {"Authorization": token},
+            });
+            return response.data;
+        }
+    } catch {
+        console.log("Error getting the events for validation");
+    }
+}
+
 export async function addEvent(event) {
     let path = ApiUtil.URL + "/login";
     try {

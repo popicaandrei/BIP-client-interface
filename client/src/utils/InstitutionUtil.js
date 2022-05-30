@@ -1,22 +1,26 @@
 export const columns = [
     {
-        key: "name",
-        label: "Name",
+        key: "event",
+        label: "Event",
+    },
+    {
+        key: "userName",
+        label: "User Name",
+    },
+    {
+        key: "userEmail",
+        label: "User Mail ",
     },
     {
         key: "reward",
-        label: "Reward Qnt.",
+        label: "Reward",
     },
     {
-        key: "active",
-        label: "Active",
+        key: "timestamp",
+        label: "Date of Event",
     },
-    {
-        key: "validationNeeded",
-        label: "Validation Required",
-    },
-    {
-        key: "authType",
-        label: "Authentication Type",
-    },
+    // {
+    //     key: "authType",
+    //     label: "Authentication Type",
+    // },
 ];
