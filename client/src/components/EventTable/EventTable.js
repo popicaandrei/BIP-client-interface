@@ -10,24 +10,25 @@ export default function EventTable({events, columns}) {
                     Hey your city events are:
                 </Text>
             </div>
-            {events ? (
-                <Grid.Container gap={2}>
-                    <Grid xs={12}>
-                        <Table
-                            aria-label="Validation Events"
-                            color="warning"
-                            selectionMode="single"
-                            defaultSelectedKeys={["2"]}
-                            containerCss={{
-                                height: "auto",
-                                minWidth: "100%",
-                            }}
-                        >
-                            <Table.Header columns={columns}>
-                                {(column) => (
-                                    <Table.Column key={column.key}>{column.label}</Table.Column>
-                                )}
-                            </Table.Header>
+            <Grid.Container gap={2}>
+                <Grid xs={12}>
+                    <Table
+                        aria-label="Validation Events"
+                        color="warning"
+                        bordered
+                        selectionMode="multiple"
+                        defaultSelectedKeys={["2"]}
+                        containerCss={{
+                            height: "auto",
+                            minWidth: "100%",
+                        }}
+                    >
+                        <Table.Header columns={columns}>
+                            {(column) => (
+                                <Table.Column key={column.key}>{column.label}</Table.Column>
+                            )}
+                        </Table.Header>
+                        {events ? (
                             <Table.Body items={events}>
                                 {(item) => (
                                     <Table.Row key={item.id}>
@@ -35,13 +36,14 @@ export default function EventTable({events, columns}) {
                                     </Table.Row>
                                 )}
                             </Table.Body>
-                        </Table>
-                    </Grid>
-                    <Grid xs={12}>
+                        ) : (<div>No Events to be validated</div>)}
+                    </Table>
+                </Grid>
+                <Grid xs={12}>
 
-                    </Grid>
-                </Grid.Container>
-            ) : (<div></div>)}
+                </Grid>
+            </Grid.Container>
+
         </div>
     );
 }
