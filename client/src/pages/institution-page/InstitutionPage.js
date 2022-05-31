@@ -6,6 +6,7 @@ import EventTable from "../../components/event-table/EventTable";
 import {getEventsForInstitution, getEventsForInstitutionNotValidated} from "../../services/EventService";
 import {columns} from "../../utils/InstitutionUtil";
 import EventCollapse from "../../components/event-collapse/EventCollapse";
+import {Card, Grid, Spacer, Text} from "@nextui-org/react";
 
 
 export default function InstitutionPage() {
@@ -13,6 +14,15 @@ export default function InstitutionPage() {
     const [eventsValidated, setEventsValidated] = useState([]);
     const [eventsAdded, setEventsAdded] = useState([]);
 
+    const MockItem = ({text}) => {
+        return (
+            <Card color="warning" css={{h: "$20"}}>
+                <Text h6 size={15} color="white" css={{mt: 0}}>
+                    {text}
+                </Text>
+            </Card>
+        );
+    }
 
     useEffect(() => {
         async function fetchEventsValidated() {
@@ -34,9 +44,22 @@ export default function InstitutionPage() {
             <header className="header-section">
                 <Navbar user={user}/>
             </header>
+            <Spacer y={2} />
             <div className="institution-container">
                 <div className="inst-statistics-constainer">
+                    <Grid.Container gap={2} justify="center">
+                        <Grid lg={70}>
+                            <MockItem text="1 of 3"/>
+                        </Grid>
+                        <Grid lg>
+                            <MockItem text="2 of 3"/>
+                        </Grid>
+                        <Grid lg>
+                            <MockItem text="3 of 3"/>
+                        </Grid>
+                    </Grid.Container>
                 </div>
+                <Spacer y={1} />
                 <div className="event-validation-table">
                     <EventTable events={eventsValidated} columns={columns}/>
                 </div>

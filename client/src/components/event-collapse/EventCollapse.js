@@ -3,8 +3,6 @@ import EventModal from "../add-event-modal/EventModal";
 import {useState} from "react";
 
 export default function EventCollapse({events}) {
-    console.log(events);
-
     const [visible, setVisible] = useState(false);
 
     const toggleModal = () => {

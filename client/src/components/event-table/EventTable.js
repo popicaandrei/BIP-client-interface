@@ -1,19 +1,29 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button, Grid, Spacer, Table, Text} from "@nextui-org/react";
 
 export default function EventTable({events, columns}) {
-    console.log(events);
-    const [selectedKeys, setSelectedKeys] = useState([]);
+    const [eventSource, setEventSource] = useState([]);
+    const [eventIds, setEventIds] = useState([]);
+    const [count, setCount] = useState(0)
 
-    function handleSelection() {
-        console.log("hei")
+    useEffect(() => {
+        const filteredEvents = events.filter((e) => !eventIds.includes(e.id.toString()));
+        setEventSource(filteredEvents);
+    }, [count, events]);
+
+    function handleSelection({anchorKey}) {
+        setEventIds([...eventIds, anchorKey]);
+    }
+
+    function handleSubmit() {
+        setCount(count => count + 1);
     }
 
     return (
         <div>
             <div className="table-title">
                 <Text h4 color="warning">
-                    Hey your city events that need validation are:
+                    City events that need validation are:
                 </Text>
             </div>
             <Grid.Container gap={2}>
@@ -22,35 +32,33 @@ export default function EventTable({events, columns}) {
                         aria-label="Validation Events"
                         color="warning"
                         selectionMode="multiple"
-                        defaultSelectedKeys={["2"]}
                         containerCss={{
                             height: "auto",
                             minWidth: "100%",
                         }}
-                        onSelectionChange={console.log(React.keys)}
+                        onSelectionChange={handleSelection}
                     >
                         <Table.Header columns={columns}>
                             {(column) => (
                                 <Table.Column key={column.key}>{column.label}</Table.Column>
                             )}
                         </Table.Header>
-                        {events ? (
-                            <Table.Body items={events}>
-                                {(item) => (
-                                    <Table.Row key={item.id}>
-                                        {(columnKey) => <Table.Cell>{item[columnKey]}</Table.Cell>}
-                                    </Table.Row>
-                                )}
-                            </Table.Body>
-                        ) : (<div>No Events to be validated</div>)}
+                        <Table.Body items={eventSource}>
+                            {(item) => (
+                                <Table.Row key={item.id} id={"row"}>
+                                    {(columnKey) => <Table.Cell
+                                        onClick={() => console.log(item[columnKey])}>{item[columnKey]}</Table.Cell>}
+                                </Table.Row>
+                            )}
+                        </Table.Body>
                     </Table>
                 </Grid>
                 <Grid xs={12}>
-                    <Button auto color="warning" rounded flat>
+                    <Button auto color="warning" rounded flat onClick={handleSubmit}>
                         Validate Events
                     </Button>
                 </Grid>
-                <Spacer y={1} />
+                <Spacer y={1}/>
             </Grid.Container>
         </div>
     );
