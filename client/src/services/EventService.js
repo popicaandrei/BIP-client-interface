@@ -33,18 +33,22 @@ export async function getEventsForInstitutionNotValidated() {
     }
 }
 
-export async function addEvent(event) {
-    let path = ApiUtil.URL + "/login";
+export async function createEvent(eventName, eventReward, eventAuth, validationNeeded) {
+    let path = ApiUtil.URL + institutionUrl + "/events";
     try {
-        await axios.post(path, {
-            email: event.name,
-            reward: event.reward,
-            active: event.active,
-            validationNedeed: event.validation,
-            authType: event.authType
-        }).then((response) => {
-            return response.status;
-        });
+        const token = localStorage.getItem("jwt");
+        if (token) {
+            await axios.post(path, {
+                email: eventName,
+                reward: eventReward,
+                active: true,
+                validationNedeed: validationNeeded,
+                authType: eventAuth
+            }, {
+                headers: {"Authorization": token}
+            })
+        }
+
     } catch {
         console.log("Error adding event");
     }
