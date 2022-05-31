@@ -12,10 +12,13 @@ export default function EventCollapse({events}) {
         console.log("closed");
     };
 
-    // const eventList = events.map((e) =>
-    //     <li>
-    //         {e.name + ""}
-    //     </li>)
+    const eventList = events.map((e) =>
+        <li>
+            <Text h4 color="warning">{e.name}</Text>
+            Having the reward: <b>{e.reward} EGLD </b> -- Authentication type needed: {e.authType} -- Is
+            currently active: {e.active} -- Needs validation to be processed: {e.validationNedeed}
+        </li>
+    )
 
     return (
         <div className="collapse-container">
@@ -25,19 +28,16 @@ export default function EventCollapse({events}) {
                         title="Added Events"
                         subtitle="See all the rewarded city events"
                     >
-                        <Text>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat.
-                        </Text>
+                        <ol>
+                            {eventList}
+                        </ol>
                     </Collapse>
                 </Grid>
                 <Grid xs={12}>
                     <Button auto color="warning" rounded flat onClick={toggleModal}>
                         Add New Event
                     </Button>
-                    <EventModal visible={visible} toggle = {toggleModal}/>
+                    <EventModal visible={visible} toggle={toggleModal}/>
                 </Grid>
 
                 <Spacer y={5}/>
