@@ -15,8 +15,9 @@ export default function EventCollapse({events}) {
     const eventList = events.map((e) =>
         <li>
             <Text h4 color="warning">{e.name}</Text>
-            Having the reward: <b>{e.reward} EGLD </b> -- Authentication type needed: {e.authType} -- Is
-            currently active: {e.active} -- Needs validation to be processed: {e.validationNedeed}
+            Having the reward: <b>{e.reward} EGLD </b> -- Authentication type needed: <b>{e.authType}</b> -- Is
+            currently active: <b>{e.active ? "Active" : "Not Active" } </b> -- Needs validation to be processed:
+            <b>{e.validationNeeded ? " Yes": " No"}</b>
         </li>
     )
 
@@ -26,7 +27,7 @@ export default function EventCollapse({events}) {
                 <Grid>
                     <Collapse
                         title="Added Events"
-                        subtitle="See all the rewarded city events"
+                        subtitle="See all incentivized city events"
                     >
                         <ol>
                             {eventList}

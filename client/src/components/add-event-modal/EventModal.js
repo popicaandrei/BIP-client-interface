@@ -37,10 +37,18 @@ export default function EventModal(props) {
                         size="lg"
                         placeholder="Reward Amount"
                     />
+                    <Input
+                        clearable
+                        bordered
+                        fullWidth
+                        color="warning"
+                        size="lg"
+                        placeholder="Authentication Type"
+                    />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button shadow color="warning" onClick={props.toggle}>
-                        Add a new event
+                    <Button auto rounded flat color="warning" onClick={props.toggle}>
+                       Create event
                     </Button>
                 </Modal.Footer>
             </Modal>

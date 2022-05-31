@@ -1,6 +1,6 @@
 import "./InstitutionPage.scss"
 import {useEffect, useState} from "react";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar from "../../components/navbar/Navbar";
 import {getUser} from "../../services/UserService";
 import EventTable from "../../components/event-table/EventTable";
 import {getEventsForInstitution, getEventsForInstitutionNotValidated} from "../../services/EventService";
@@ -43,7 +43,6 @@ export default function InstitutionPage() {
                 <div className="event-display">
                     <EventCollapse events={eventsAdded}/>
                 </div>
-
             </div>
         </div>
     )
