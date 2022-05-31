@@ -12,15 +12,15 @@ export const columns = [
         label: "User Mail ",
     },
     {
-        key: "reward",
-        label: "Reward",
-    },
-    {
         key: "timestamp",
         label: "Date of Event",
     },
-    // {
-    //     key: "authType",
-    //     label: "Authentication Type",
-    // },
+    {
+        key: "authType",
+        label: "Authentication Type",
+    },
+    {
+        key: "reward",
+        label: "Reward",
+    },
 ];

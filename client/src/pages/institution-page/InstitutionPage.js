@@ -2,10 +2,10 @@ import "./InstitutionPage.scss"
 import {useEffect, useState} from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import {getUser} from "../../services/UserService";
-import EventTable from "../../components/EventTable/EventTable";
-import {Button} from "@nextui-org/react";
+import EventTable from "../../components/event-table/EventTable";
 import {getEventsForInstitutionNotValidated} from "../../services/EventService";
 import {columns} from "../../utils/InstitutionUtil";
+import EventCollapse from "../../components/event-collapse/EventCollapse";
 
 
 export default function InstitutionPage() {
@@ -17,6 +17,7 @@ export default function InstitutionPage() {
             let e = await getEventsForInstitutionNotValidated();
             setEventsValidated(e);
         }
+
         fetchEvents();
     }, []);
 
@@ -27,19 +28,14 @@ export default function InstitutionPage() {
             </header>
             <div className="institution-container">
                 <div className="inst-statistics-constainer">
-
                 </div>
                 <div className="event-validation-table">
                     <EventTable events={eventsValidated} columns={columns}/>
-                    <Button auto color="warning" rounded flat>
-                        Validate Events
-                    </Button>
                 </div>
-                {/*<div className="event-display">*/}
-                {/*    <Button auto color="warning" rounded flat>*/}
-                {/*        Add New Event*/}
-                {/*    </Button>*/}
-                {/*</div>*/}
+                <div className="event-display">
+                    <EventCollapse/>
+                </div>
+
             </div>
         </div>
     )
