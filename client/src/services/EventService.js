@@ -39,7 +39,7 @@ export async function createEvent(eventName, eventReward, eventAuth, validationN
         const token = localStorage.getItem("jwt");
         if (token) {
             await axios.post(path, {
-                email: eventName,
+                name: eventName,
                 reward: eventReward,
                 active: true,
                 validationNedeed: validationNeeded,
