@@ -1,7 +1,22 @@
 import {Button, Collapse, Grid, Spacer, Text} from "@nextui-org/react";
+import EventModal from "../add-event-modal/EventModal";
+import {useState} from "react";
 
 export default function EventCollapse({events}) {
     console.log(events);
+
+    const [visible, setVisible] = useState(false);
+
+    const toggleModal = () => {
+        setVisible(visible => !visible);
+        console.log("closed");
+    };
+
+    // const eventList = events.map((e) =>
+    //     <li>
+    //         {e.name + ""}
+    //     </li>)
+
     return (
         <div className="collapse-container">
             <Grid.Container gap={2}>
@@ -19,9 +34,10 @@ export default function EventCollapse({events}) {
                     </Collapse>
                 </Grid>
                 <Grid xs={12}>
-                    <Button auto color="warning" rounded flat>
+                    <Button auto color="warning" rounded flat onClick={toggleModal}>
                         Add New Event
                     </Button>
+                    <EventModal visible={visible} toggle = {toggleModal}/>
                 </Grid>
 
                 <Spacer y={5}/>

@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import {getUser} from "../../services/UserService";
 import EventTable from "../../components/event-table/EventTable";
-import {getEventsForInstitutionNotValidated} from "../../services/EventService";
+import {getEventsForInstitution, getEventsForInstitutionNotValidated} from "../../services/EventService";
 import {columns} from "../../utils/InstitutionUtil";
 import EventCollapse from "../../components/event-collapse/EventCollapse";
 
@@ -11,14 +11,22 @@ import EventCollapse from "../../components/event-collapse/EventCollapse";
 export default function InstitutionPage() {
     const user = getUser();
     const [eventsValidated, setEventsValidated] = useState([]);
+    const [eventsAdded, setEventsAdded] = useState([]);
+
 
     useEffect(() => {
-        async function fetchEvents() {
-            let e = await getEventsForInstitutionNotValidated();
-            setEventsValidated(e);
+        async function fetchEventsValidated() {
+            let ev = await getEventsForInstitutionNotValidated();
+            setEventsValidated(ev);
         }
 
-        fetchEvents();
+        async function fetchEventsAdded() {
+            let ea = await getEventsForInstitution();
+            setEventsAdded(ea);
+        }
+
+        fetchEventsValidated();
+        fetchEventsAdded()
     }, []);
 
     return (
@@ -33,7 +41,7 @@ export default function InstitutionPage() {
                     <EventTable events={eventsValidated} columns={columns}/>
                 </div>
                 <div className="event-display">
-                    <EventCollapse/>
+                    <EventCollapse events={eventsAdded}/>
                 </div>
 
             </div>
