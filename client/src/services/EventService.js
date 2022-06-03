@@ -53,3 +53,21 @@ export async function createEvent(eventName, eventReward, eventAuth, validationN
         console.log("Error adding event");
     }
 }
+
+export async function validateEvents(eventIds) {
+    let path = ApiUtil.URL + institutionUrl + "/events/validate/";
+    try {
+        const token = localStorage.getItem("jwt");
+        if (token) {
+            eventIds.forEach(
+                (id) => {
+                    axios.put(path + id, {
+                        headers: {"Authorization": token},
+                    });
+                }
+            )
+        }
+    } catch {
+        console.log("Error validating events");
+    }
+}
