@@ -1,7 +1,15 @@
 import {Avatar, Text} from "@nextui-org/react";
 import "./Navbar.scss"
+import {useNavigate} from "react-router-dom";
 
 export default function Navbar({user}) {
+    const navigate = useNavigate();
+
+    function handleLogout(){
+        localStorage.removeItem("jwt");
+        localStorage.removeItem("user");
+        navigate("/login")
+    }
 
     return (
         <header className="header-section">
@@ -21,8 +29,8 @@ export default function Navbar({user}) {
                 </div>
 
                 <div className="nav-items">
-                    <Text h4 weight="bold"
-                          css={{textGradient: "45deg, $blue600 -20%, $pink600 50%",}}>Logout</Text>
+                    <Text className="logout-text" h4 weight="bold"
+                          css={{textGradient: "45deg, $blue600 -20%, $pink600 50%",}} onClick={handleLogout}>Logout</Text>
                 </div>
             </nav>
         </header>
