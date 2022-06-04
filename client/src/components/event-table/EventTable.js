@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Button, Grid, Spacer, Table, Text} from "@nextui-org/react";
+import {validateEvents} from "../../services/EventService";
 
 export default function EventTable({events, columns}) {
     const [eventSource, setEventSource] = useState([]);
@@ -17,6 +18,7 @@ export default function EventTable({events, columns}) {
 
     function handleSubmit() {
         setCount(count => count + 1);
+        validateEvents(eventIds);
     }
 
     return (

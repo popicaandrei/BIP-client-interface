@@ -44,22 +44,23 @@ export default function InstitutionPage() {
             <header className="header-section">
                 <Navbar user={user}/>
             </header>
-            <Spacer y={2} />
+            <Spacer y={2}/>
             <div className="institution-container">
                 <div className="inst-statistics-constainer">
                     <Grid.Container gap={2} justify="center">
-                        <Grid lg={70}>
-                            <MockItem text="1 of 3"/>
+                        <Grid fluid={70}>
+                            <MockItem text="dsadasdasdsssssssssss"/>
                         </Grid>
-                        <Grid lg>
-                            <MockItem text="2 of 3"/>
+                        <Grid fluid={70}>
+                            <MockItem text="fhfghfghdfghdfghdfghdfghdfghdfgh"/>
                         </Grid>
-                        <Grid lg>
-                            <MockItem text="3 of 3"/>
+                        <Grid fluid={70}>
+                            <MockItem text="ehtrterherthertherhrt"/>
                         </Grid>
-                    </Grid.Container>
+                        </Grid.Container>
                 </div>
-                <Spacer y={1} />
+
+                <Spacer y={1}/>
                 <div className="event-validation-table">
                     <EventTable events={eventsValidated} columns={columns}/>
                 </div>
@@ -68,5 +69,5 @@ export default function InstitutionPage() {
                 </div>
             </div>
         </div>
-    )
+)
 }
