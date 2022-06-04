@@ -1,10 +1,10 @@
 import {ApiUtil} from "../utils/ApiUtil";
 import axios from "axios";
 
-const institutionUrl = "/institutions"
+const eventsUrl = "/institutions/events";
 
 export async function getEventsForInstitution() {
-    let path = ApiUtil.URL + institutionUrl + "/events";
+    let path = ApiUtil.URL + eventsUrl;
     try {
         const token = localStorage.getItem("jwt");
         if (token) {
@@ -19,7 +19,7 @@ export async function getEventsForInstitution() {
 }
 
 export async function getEventsForInstitutionNotValidated() {
-    let path = ApiUtil.URL + institutionUrl + "/events/validate";
+    let path = ApiUtil.URL + eventsUrl + "/validate";
     try {
         const token = localStorage.getItem("jwt");
         if (token) {
@@ -34,7 +34,7 @@ export async function getEventsForInstitutionNotValidated() {
 }
 
 export async function createEvent(eventName, eventReward, eventAuth, validationNeeded) {
-    let path = ApiUtil.URL + institutionUrl + "/events";
+    let path = ApiUtil.URL + eventsUrl + "/events";
     try {
         const token = localStorage.getItem("jwt");
         if (token) {
@@ -54,16 +54,18 @@ export async function createEvent(eventName, eventReward, eventAuth, validationN
     }
 }
 
-export async function validateEvents(eventIds) {
-    let path = ApiUtil.URL + institutionUrl + "/events/validate/";
+export function validateEvents(eventIds) {
+    let path = ApiUtil.URL + eventsUrl + "validate/";
     try {
         const token = localStorage.getItem("jwt");
         if (token) {
             eventIds.forEach(
                 (id) => {
+                    console.log("aici" + id)
                     axios.put(path + id, {
                         headers: {"Authorization": token},
-                    });
+                    }).then(r => console.log(r));
+                    console.log("aici2" + id)
                 }
             )
         }

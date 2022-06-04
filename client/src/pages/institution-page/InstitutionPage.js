@@ -8,22 +8,23 @@ import {columns} from "../../utils/InstitutionUtil";
 import EventCollapse from "../../components/event-collapse/EventCollapse";
 import {Card, Grid, Spacer, Text} from "@nextui-org/react";
 
-
 export default function InstitutionPage() {
     const user = getUser();
     const [eventsValidated, setEventsValidated] = useState([]);
     const [eventsAdded, setEventsAdded] = useState([]);
 
-    const MockItem = ({text}) => {
+    const MockItem = ({text1, text2}) => {
         return (
-            <Card color="warning" css={{h: "$20"}}>
+            <Card color="warning" css={{h: "$20"}} justi>
                 <Text h6 size={15} color="white" css={{mt: 0}}>
-                    {text}
+                    {text1}
+                </Text>
+                <Text h4 color="white" css={{mt: 0}}>
+                    {text2}
                 </Text>
             </Card>
         );
     }
-
     useEffect(() => {
         async function fetchEventsValidated() {
             let ev = await getEventsForInstitutionNotValidated();
@@ -47,18 +48,26 @@ export default function InstitutionPage() {
             <Spacer y={2}/>
             <div className="institution-container">
                 <div className="inst-statistics-constainer">
-                    <Grid.Container gap={2} justify="center">
+                    <Grid.Container gap={4} justify="center">
                         <Grid fluid={70}>
-                            <MockItem text="dsadasdasdsssssssssss"/>
+                            <MockItem text1="Your wallet balance is: " text2="155 EGLD"/>
                         </Grid>
                         <Grid fluid={70}>
-                            <MockItem text="fhfghfghdfghdfghdfghdfghdfghdfgh"/>
+                            <MockItem text1="Total value sent in rewards: " text2="20543$"/>
                         </Grid>
                         <Grid fluid={70}>
-                            <MockItem text="ehtrterherthertherhrt"/>
+                            <MockItem text1="Total incentives sent: " text2="24 EGLD"/>
                         </Grid>
-                        </Grid.Container>
+                    </Grid.Container>
+
+                    <a href="https://devnet-explorer.elrond.com/accounts/erd1qhauudy6txe77m702wzd5uuh8wmsydee348pkg48hzygpwgmwvhshhjnt5"
+                       target="_blank">
+                        <Text h6 size={15} color="white">
+                            See all details on Elrond Explorer
+                        </Text>
+                    </a>
                 </div>
+
 
                 <Spacer y={1}/>
                 <div className="event-validation-table">
@@ -69,5 +78,5 @@ export default function InstitutionPage() {
                 </div>
             </div>
         </div>
-)
+    )
 }

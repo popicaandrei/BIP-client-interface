@@ -17,8 +17,8 @@ export default function EventTable({events, columns}) {
     }
 
     function handleSubmit() {
-        setCount(count => count + 1);
         validateEvents(eventIds);
+        setCount(count => count + 1)
     }
 
     return (
