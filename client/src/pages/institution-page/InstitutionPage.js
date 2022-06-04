@@ -7,6 +7,7 @@ import {getEventsForInstitution, getEventsForInstitutionNotValidated} from "../.
 import {columns} from "../../utils/InstitutionUtil";
 import EventCollapse from "../../components/event-collapse/EventCollapse";
 import {Card, Grid, Spacer, Text} from "@nextui-org/react";
+import Footer from "../../components/footer/Footer";
 
 export default function InstitutionPage() {
     const user = getUser();
@@ -68,7 +69,6 @@ export default function InstitutionPage() {
                     </a>
                 </div>
 
-
                 <Spacer y={1}/>
                 <div className="event-validation-table">
                     <EventTable events={eventsValidated} columns={columns}/>
@@ -76,6 +76,9 @@ export default function InstitutionPage() {
                 <div className="event-display">
                     <EventCollapse events={eventsAdded}/>
                 </div>
+                <footer>
+                    <Footer/>
+                </footer>
             </div>
         </div>
     )

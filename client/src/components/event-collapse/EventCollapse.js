@@ -38,8 +38,7 @@ export default function EventCollapse({events}) {
                     </Button>
                     <EventModal visible={visible} toggle={toggleModal}/>
                 </Grid>
-
-                <Spacer y={5}/>
+                <Spacer y={3}/>
             </Grid.Container>
         </div>
     );
