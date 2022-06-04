@@ -14,18 +14,6 @@ export default function InstitutionPage() {
     const [eventsValidated, setEventsValidated] = useState([]);
     const [eventsAdded, setEventsAdded] = useState([]);
 
-    const MockItem = ({text1, text2}) => {
-        return (
-            <Card color="warning" css={{h: "$20"}} justi>
-                <Text h6 size={15} color="white" css={{mt: 0}}>
-                    {text1}
-                </Text>
-                <Text h4 color="white" css={{mt: 0}}>
-                    {text2}
-                </Text>
-            </Card>
-        );
-    }
     useEffect(() => {
         async function fetchEventsValidated() {
             let ev = await getEventsForInstitutionNotValidated();
@@ -40,6 +28,19 @@ export default function InstitutionPage() {
         fetchEventsValidated();
         fetchEventsAdded()
     }, []);
+
+    const MockItem = ({text1, text2}) => {
+        return (
+            <Card color="warning" css={{h: "$20"}} justi>
+                <Text h6 size={15} color="white" css={{mt: 0}}>
+                    {text1}
+                </Text>
+                <Text h4 color="white" css={{mt: 0}}>
+                    {text2}
+                </Text>
+            </Card>
+        );
+    }
 
     return (
         <div>
