@@ -4,13 +4,19 @@ import {getUser} from "../../services/UserService";
 import Navbar from "../../components/navbar/Navbar";
 import {Card, Grid, Spacer, Text} from "@nextui-org/react";
 import Footer from "../../components/footer/Footer";
+import ActivityTable from "../../components/activity-table/ActivityTable";
+import {activityColumns} from "../../utils/CitizenUtil";
+import {getEventsForInstitutionNotValidated} from "../../services/EventService";
 
 
 export function CitizenPage() {
     const user = getUser();
 
     useEffect(() => {
-
+        async function fetchEventsValidated() {
+            let ev = await getEventsForInstitutionNotValidated();
+            setEventsValidated(ev);
+        }
     }, []);
 
     const MockItem = ({text1, text2}) => {
@@ -46,7 +52,8 @@ export function CitizenPage() {
                         </Grid>
                     </Grid.Container>
 
-                    <a id="explorer" href="https://devnet-explorer.elrond.com/accounts/erd1hfw4zhllexu4mys02hyj25nu5vuerp8mczhgzuz8ckp74q6muxrs6s2tt0"
+                    <a id="explorer"
+                       href="https://devnet-explorer.elrond.com/accounts/erd1hfw4zhllexu4mys02hyj25nu5vuerp8mczhgzuz8ckp74q6muxrs6s2tt0"
                        target="_blank">
                         <Text h6 size={15} color="white">
                             See all details on Elrond Explorer
@@ -55,7 +62,7 @@ export function CitizenPage() {
                 </div>
                 <Spacer y={1}/>
                 <div className="activity-table">
-
+                    <ActivityTable activities={activities} activityColumns={activityColumns}/>
                 </div>
                 <footer>
                     <Footer/>
