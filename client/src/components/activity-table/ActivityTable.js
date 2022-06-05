@@ -1,7 +1,7 @@
-import {Button, Grid, Spacer, Table, Text} from "@nextui-org/react";
+import {Button, Grid, Table, Text} from "@nextui-org/react";
 import {useEffect} from "react";
 
-export default function ActivityTable({activities, activityColumns}){
+export default function ActivityTable({activities, activityColumns}) {
 
     useEffect(() => {
     }, []);
@@ -34,19 +34,17 @@ export default function ActivityTable({activities, activityColumns}){
                                 <Table.Row key={item.id} id={"row"}>
                                     {(columnKey) =>
                                         <Table.Cell
-                                        onClick={() => console.log(item[columnKey])}>{item[columnKey]}
-                                    </Table.Cell>}
+                                            onClick={() => console.log(item[columnKey])}>{item[columnKey]}</Table.Cell>}
                                 </Table.Row>
                             )}
                         </Table.Body>
                     </Table>
                 </Grid>
                 <Grid xs={12}>
-                    <Button auto color="warning" rounded flat>
-                        Validate Events
+                    <Button auto color="secondary" rounded flat>
+                        Manage your Cards
                     </Button>
                 </Grid>
-                <Spacer y={1}/>
             </Grid.Container>
         </div>
     );

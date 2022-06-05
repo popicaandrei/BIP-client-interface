@@ -61,10 +61,11 @@ export function CitizenPage() {
                 <div className="activity-table">
                     <ActivityTable activities={activities} activityColumns={activityColumns}/>
                 </div>
-                <footer>
-                    <Footer/>
-                </footer>
+                <Spacer y={1}/>
             </div>
+            <footer>
+                <Footer/>
+            </footer>
         </div>
     )
 }

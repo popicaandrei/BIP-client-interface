@@ -11,11 +11,6 @@ export default function EventModal(props) {
         let eventAuth = document.getElementById("auth").value;
         let validationNeeded = selected;
 
-        console.log(eventName)
-        console.log(eventReward)
-        console.log(eventAuth)
-        console.log(validationNeeded)
-
         await createEvent(eventName, eventReward, eventAuth, validationNeeded);
         window.location.reload(true);
     }
