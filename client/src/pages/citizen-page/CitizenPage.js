@@ -46,7 +46,7 @@ export function CitizenPage() {
                         </Grid>
                     </Grid.Container>
 
-                    <a href="https://devnet-explorer.elrond.com/accounts/erd1hfw4zhllexu4mys02hyj25nu5vuerp8mczhgzuz8ckp74q6muxrs6s2tt0"
+                    <a id="explorer" href="https://devnet-explorer.elrond.com/accounts/erd1hfw4zhllexu4mys02hyj25nu5vuerp8mczhgzuz8ckp74q6muxrs6s2tt0"
                        target="_blank">
                         <Text h6 size={15} color="white">
                             See all details on Elrond Explorer

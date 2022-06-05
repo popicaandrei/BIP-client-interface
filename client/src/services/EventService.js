@@ -55,17 +55,15 @@ export async function createEvent(eventName, eventReward, eventAuth, validationN
 }
 
 export function validateEvents(eventIds) {
-    let path = ApiUtil.URL + eventsUrl + "validate/";
+    let path = ApiUtil.URL + eventsUrl + "/validate/";
     try {
         const token = localStorage.getItem("jwt");
         if (token) {
             eventIds.forEach(
                 (id) => {
-                    console.log("aici" + id)
-                    axios.put(path + id, {
+                    axios.put(path + id,{},{
                         headers: {"Authorization": token},
-                    }).then(r => console.log(r));
-                    console.log("aici2" + id)
+                    });
                 }
             )
         }
