@@ -1,5 +1,5 @@
-import React, {useEffect} from "@types/react";
 import {Button, Grid, Spacer, Table, Text} from "@nextui-org/react";
+import {useEffect} from "react";
 
 export default function ActivityTable({activities, activityColumns}){
 
@@ -9,8 +9,8 @@ export default function ActivityTable({activities, activityColumns}){
     return (
         <div>
             <div className="table-title">
-                <Text h4 color="warning">
-                    City events that need validation are:
+                <Text h4 color="secondary">
+                    Here are your last activities in the city:
                 </Text>
             </div>
             <Grid.Container gap={2}>
@@ -32,15 +32,17 @@ export default function ActivityTable({activities, activityColumns}){
                         <Table.Body items={activities}>
                             {(item) => (
                                 <Table.Row key={item.id} id={"row"}>
-                                    {(columnKey) => <Table.Cell
-                                        onClick={() => console.log(item[columnKey])}>{item[columnKey]}</Table.Cell>}
+                                    {(columnKey) =>
+                                        <Table.Cell
+                                        onClick={() => console.log(item[columnKey])}>{item[columnKey]}
+                                    </Table.Cell>}
                                 </Table.Row>
                             )}
                         </Table.Body>
                     </Table>
                 </Grid>
                 <Grid xs={12}>
-                    <Button auto color="warning" rounded flat onClick={handleSubmit}>
+                    <Button auto color="warning" rounded flat>
                         Validate Events
                     </Button>
                 </Grid>

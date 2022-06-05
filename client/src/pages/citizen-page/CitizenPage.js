@@ -1,22 +1,22 @@
 import "./CitizenPage.scss"
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {getUser} from "../../services/UserService";
 import Navbar from "../../components/navbar/Navbar";
 import {Card, Grid, Spacer, Text} from "@nextui-org/react";
 import Footer from "../../components/footer/Footer";
 import ActivityTable from "../../components/activity-table/ActivityTable";
 import {activityColumns} from "../../utils/CitizenUtil";
-import {getEventsForInstitutionNotValidated} from "../../services/EventService";
+import {getActivities} from "../../services/CitizenService";
 
 
 export function CitizenPage() {
     const user = getUser();
+    const [activities, setActivities] = useState([])
 
     useEffect(() => {
-        async function fetchEventsValidated() {
-            let ev = await getEventsForInstitutionNotValidated();
-            setEventsValidated(ev);
-        }
+        getActivities().then((data) => {
+            setActivities(data);
+        });
     }, []);
 
     const MockItem = ({text1, text2}) => {
