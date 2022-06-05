@@ -6,7 +6,7 @@ import EventTable from "../../components/event-table/EventTable";
 import {getEventsForInstitution, getEventsForInstitutionNotValidated} from "../../services/EventService";
 import {columns} from "../../utils/InstitutionUtil";
 import EventCollapse from "../../components/event-collapse/EventCollapse";
-import {Card, Grid, Spacer, Text} from "@nextui-org/react";
+import {Card, Grid, Link, Spacer, Text} from "@nextui-org/react";
 import Footer from "../../components/footer/Footer";
 
 export default function InstitutionPage() {
@@ -61,13 +61,10 @@ export default function InstitutionPage() {
                             <MockItem text1="Total incentives sent: " text2="24 EGLD"/>
                         </Grid>
                     </Grid.Container>
-
-                    <a href="https://devnet-explorer.elrond.com/accounts/erd1qhauudy6txe77m702wzd5uuh8wmsydee348pkg48hzygpwgmwvhshhjnt5"
-                       target="_blank">
-                        <Text h6 size={15} color="white">
-                            See all details on Elrond Explorer
-                        </Text>
-                    </a>
+                    <Link id="inst-explorer" href="https://devnet-explorer.elrond.com/accounts/erd1qhauudy6txe77m702wzd5uuh8wmsydee348pkg48hzygpwgmwvhshhjnt5"
+                          icon underline block color="text">
+                        See all details on Elrond Explorer
+                    </Link>
                 </div>
 
                 <Spacer y={1}/>

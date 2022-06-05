@@ -2,7 +2,7 @@ import "./CitizenPage.scss"
 import {useEffect, useState} from "react";
 import {getUser} from "../../services/UserService";
 import Navbar from "../../components/navbar/Navbar";
-import {Card, Grid, Spacer, Text} from "@nextui-org/react";
+import {Card, Grid, Link, Spacer, Text} from "@nextui-org/react";
 import Footer from "../../components/footer/Footer";
 import ActivityTable from "../../components/activity-table/ActivityTable";
 import {activityColumns} from "../../utils/CitizenUtil";
@@ -52,13 +52,10 @@ export function CitizenPage() {
                         </Grid>
                     </Grid.Container>
 
-                    <a id="explorer"
-                       href="https://devnet-explorer.elrond.com/accounts/erd1hfw4zhllexu4mys02hyj25nu5vuerp8mczhgzuz8ckp74q6muxrs6s2tt0"
-                       target="_blank">
-                        <Text h6 size={15} color="white">
-                            See all details on Elrond Explorer
-                        </Text>
-                    </a>
+                    <Link id="explorer" href="https://devnet-explorer.elrond.com/accounts/erd1hfw4zhllexu4mys02hyj25nu5vuerp8mczhgzuz8ckp74q6muxrs6s2tt0"
+                          icon underline block color="text">
+                        See all details on Elrond Explorer
+                    </Link>
                 </div>
                 <Spacer y={1}/>
                 <div className="activity-table">
