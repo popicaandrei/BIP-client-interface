@@ -1,4 +1,4 @@
-import {Button, Grid, Table, Text} from "@nextui-org/react";
+import {Grid, Table, Text} from "@nextui-org/react";
 import {useEffect} from "react";
 
 export default function ActivityTable({activities, activityColumns}) {
@@ -39,11 +39,6 @@ export default function ActivityTable({activities, activityColumns}) {
                             )}
                         </Table.Body>
                     </Table>
-                </Grid>
-                <Grid xs={12}>
-                    <Button auto color="secondary" rounded flat>
-                        Manage your Cards
-                    </Button>
                 </Grid>
             </Grid.Container>
         </div>

@@ -2,22 +2,27 @@ import "./CitizenPage.scss"
 import {useEffect, useState} from "react";
 import {getUser} from "../../services/UserService";
 import Navbar from "../../components/navbar/Navbar";
-import {Card, Grid, Link, Spacer, Text} from "@nextui-org/react";
+import {Button, Card, Grid, Link, Spacer, Text} from "@nextui-org/react";
 import Footer from "../../components/footer/Footer";
 import ActivityTable from "../../components/activity-table/ActivityTable";
 import {activityColumns} from "../../utils/CitizenUtil";
 import {getActivities} from "../../services/CitizenService";
-
+import CardModal from "../../components/card-modal/CardModal";
 
 export function CitizenPage() {
     const user = getUser();
-    const [activities, setActivities] = useState([])
+    const [activities, setActivities] = useState([]);
+    const [visible, setVisible] = useState(false);
 
     useEffect(() => {
         getActivities().then((data) => {
             setActivities(data);
         });
     }, []);
+
+    const toggleModal = () => {
+        setVisible(visible => !visible);
+    };
 
     const MockItem = ({text1, text2}) => {
         return (
@@ -52,7 +57,8 @@ export function CitizenPage() {
                         </Grid>
                     </Grid.Container>
 
-                    <Link id="explorer" href="https://devnet-explorer.elrond.com/accounts/erd1hfw4zhllexu4mys02hyj25nu5vuerp8mczhgzuz8ckp74q6muxrs6s2tt0"
+                    <Link id="explorer"
+                          href="https://devnet-explorer.elrond.com/accounts/erd1hfw4zhllexu4mys02hyj25nu5vuerp8mczhgzuz8ckp74q6muxrs6s2tt0"
                           icon underline block color="text">
                         See all details on Elrond Explorer
                     </Link>
@@ -61,6 +67,12 @@ export function CitizenPage() {
                 <div className="activity-table">
                     <ActivityTable activities={activities} activityColumns={activityColumns}/>
                 </div>
+                <Grid xs={12}>
+                    <Button auto color="secondary" rounded flat onClick={toggleModal}>
+                        Manage your Cards
+                    </Button>
+                    <CardModal visible={visible} toggle={toggleModal}/>
+                </Grid>
                 <Spacer y={1}/>
             </div>
             <footer>
