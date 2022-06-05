@@ -31,7 +31,7 @@ export default function InstitutionPage() {
 
     const MockItem = ({text1, text2}) => {
         return (
-            <Card color="warning" css={{h: "$20"}} justi>
+            <Card color="warning" css={{h: "$20"}}>
                 <Text h6 size={15} color="white" css={{mt: 0}}>
                     {text1}
                 </Text>
