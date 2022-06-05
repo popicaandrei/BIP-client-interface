@@ -73,7 +73,7 @@ export function CitizenPage() {
                     </Button>
                     <CardModal visible={visible} toggle={toggleModal}/>
                 </Grid>
-                <Spacer y={1}/>
+                <Spacer y={2}/>
             </div>
             <footer>
                 <Footer/>

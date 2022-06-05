@@ -1,10 +1,6 @@
 import {Grid, Table, Text} from "@nextui-org/react";
-import {useEffect} from "react";
 
 export default function ActivityTable({activities, activityColumns}) {
-
-    useEffect(() => {
-    }, []);
 
     return (
         <div>
@@ -19,6 +15,7 @@ export default function ActivityTable({activities, activityColumns}) {
                         aria-label="Activities Table"
                         color="secondary"
                         selectionMode="single"
+                        defaultSelectedKeys={["1"]}
                         containerCss={{
                             height: "auto",
                             minWidth: "100%",

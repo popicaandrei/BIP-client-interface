@@ -63,7 +63,7 @@ export default function CardModal(props) {
                         color="secondary"
                         size="lg"
                         label="Card Number"
-                        placeholder="Displayed as e.g., 275274278783373788"
+                        placeholder="e.g., 275274278783373788"
                     />
                     <Input
                         id={"code"}
@@ -73,7 +73,7 @@ export default function CardModal(props) {
                         color="secondary"
                         size="lg"
                         label="Card Code"
-                        placeholder="Code as e.g., 973a0e3qw5e36z9"
+                        placeholder="e.g., 973a0e3qw5e36z9"
                     />
                     <Input
                         id={"validFrom"}
